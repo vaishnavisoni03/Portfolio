@@ -1,48 +1,58 @@
 /* ==========================================================================
    Vaishnavi Soni - Personal Portfolio Stylesheet
-   Palette: Earthy Warm Palette
-   #CAD2C5 - Light Sage
-   #84A98C - Soft Green
-   #52796F - Muted Teal
-   #354F52 - Deep Green
-   #2F3E46 - Dark Blue-Green
+   Palette: Berry Rose & Cherry Blossom (coolors.co/palette/...)
+   #590d22 — Deepest Wine / Dark Berry
+   #800f2f — Rich Burgundy
+   #a4133c — Vivid Crimson
+   #c9184a — Radiant Rose
+   #ff4d6d — Bright Coral Pink
+   #ff758f — Warm Blush
+   #ff8fa3 — Soft Rose
+   #ffb3c1 — Delicate Pink
+   #ffccd5 — Pale Cherry Blossom
+   #fff0f3 — Warm Porcelain / Soft Cream Pink
    Typography: Fredoka
    ========================================================================== */
 
-/* --- CSS Variables for Earthy Warm Palette --- */
+/* --- CSS Variables for Rose & Wine Palette --- */
 :root {
-  --light-sage: #CAD2C5;
-  --soft-green: #84A98C;
-  --muted-teal: #52796F;
-  --deep-green: #354F52;
-  --dark-blue-green: #2F3E46;
+  --wine-900: #590d22;
+  --wine-800: #800f2f;
+  --crimson-700: #a4133c;
+  --rose-600: #c9184a;
+  --pink-500: #ff4d6d;
+  --blush-400: #ff758f;
+  --pink-300: #ff8fa3;
+  --pink-200: #ffb3c1;
+  --blossom-100: #ffccd5;
+  --cream-50: #fff0f3;
 
-  /* Semantic Layout Mappings */
-  --bg-page: #f5f7f4;                 /* Ultra soft light sage background */
-  --bg-card: #ffffff;                 /* Clean white card surface */
-  --bg-soft: #CAD2C5;                 /* Light sage for decorative blocks & soft badges */
-  --bg-subtle: rgba(202, 210, 197, 0.28); /* Very soft wash */
-  
-  --text-title: #2F3E46;              /* Dark blue-green for main titles */
-  --text-heading: #354F52;            /* Deep green for section headings */
-  --text-body: #354F52;               /* Deep green for readable body text */
-  --text-muted: #52796F;              /* Muted teal for secondary labels */
+  /* Semantic UI Tokens */
+  --bg-page: #fff0f3;
+  --bg-card: #ffffff;
+  --bg-subtle: rgba(255, 204, 213, 0.45);
+  --bg-pill: rgba(255, 179, 193, 0.35);
 
-  --interactive: #52796F;             /* Muted teal for buttons & links */
-  --interactive-hover: #354F52;       /* Deep green on hover */
-  --accent-highlight: #84A98C;        /* Soft green for badges & accents */
+  --text-title: #590d22;
+  --text-heading: #800f2f;
+  --text-body: #590d22;
+  --text-muted: #a4133c;
 
-  --border-color: rgba(82, 121, 111, 0.22);
-  --border-card: rgba(82, 121, 111, 0.16);
+  --interactive: #c9184a;
+  --interactive-hover: #800f2f;
+  --accent-highlight: #ff4d6d;
+
+  --border-color: rgba(201, 24, 74, 0.2);
+  --border-card: rgba(201, 24, 74, 0.12);
 
   --font-main: 'Fredoka', cursive, sans-serif;
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-pill: 50px;
-  
-  --shadow-soft: 0 4px 20px rgba(47, 62, 70, 0.06);
-  --shadow-hover: 0 8px 24px rgba(47, 62, 70, 0.12);
+
+  --shadow-soft: 0 4px 20px rgba(89, 13, 34, 0.05);
+  --shadow-hover: 0 8px 24px rgba(89, 13, 34, 0.12);
   --transition: all 0.25s ease;
 }
 
@@ -95,8 +105,8 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(245, 247, 244, 0.94);
-  backdrop-filter: blur(8px);
+  background-color: rgba(255, 240, 243, 0.94);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   padding: 1rem 0;
 }
@@ -117,7 +127,7 @@ a:hover {
 }
 
 .logo-leaf {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 
 .logo:hover {
@@ -126,7 +136,7 @@ a:hover {
 
 .nav-menu {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.15rem;
   align-items: center;
 }
 
@@ -141,11 +151,11 @@ a:hover {
 
 .nav-link:hover,
 .nav-link.active-link {
-  color: var(--dark-blue-green);
-  background-color: rgba(202, 210, 197, 0.4);
+  color: var(--wine-900);
+  background-color: var(--blossom-100);
 }
 
-/* Mobile Navigation Hamburger */
+/* Mobile Hamburger Button */
 .nav-toggle {
   display: none;
   background: none;
@@ -164,7 +174,7 @@ a:hover {
   transition: var(--transition);
 }
 
-/* --- Shared Section Styling --- */
+/* --- Shared Section Layout --- */
 .section {
   padding: 4.5rem 0;
   border-bottom: 1px solid var(--border-color);
@@ -176,8 +186,8 @@ a:hover {
 
 .section-badge {
   display: inline-block;
-  background-color: var(--bg-subtle);
-  color: var(--deep-green);
+  background-color: var(--blossom-100);
+  color: var(--wine-800);
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -190,7 +200,7 @@ a:hover {
 
 .section-heading {
   font-size: 1.95rem;
-  color: var(--dark-blue-green);
+  color: var(--text-title);
   letter-spacing: -0.01em;
 }
 
@@ -211,8 +221,8 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: rgba(202, 210, 197, 0.45);
-  color: var(--deep-green);
+  background-color: var(--blossom-100);
+  color: var(--wine-800);
   font-size: 0.88rem;
   font-weight: 600;
   padding: 0.35rem 0.95rem;
@@ -224,26 +234,27 @@ a:hover {
 .pill-dot {
   width: 8px;
   height: 8px;
-  background-color: var(--soft-green);
+  background-color: var(--accent-highlight);
   border-radius: 50%;
   display: inline-block;
+  box-shadow: 0 0 0 2px rgba(255, 77, 109, 0.3);
 }
 
 .hero-title {
   font-size: clamp(2.3rem, 5.5vw, 3.4rem);
-  color: var(--dark-blue-green);
+  color: var(--text-title);
   margin-bottom: 0.5rem;
   letter-spacing: -0.02em;
 }
 
 .hero-name {
-  color: var(--muted-teal);
+  color: var(--rose-600);
 }
 
 .hero-subtitle {
   font-size: 1.2rem;
   font-weight: 500;
-  color: var(--deep-green);
+  color: var(--wine-800);
   margin-bottom: 1.25rem;
 }
 
@@ -276,30 +287,31 @@ a:hover {
 }
 
 .btn-primary {
-  background-color: var(--muted-teal);
+  background-color: var(--rose-600);
   color: #ffffff;
-  border-color: var(--muted-teal);
-  box-shadow: 0 4px 12px rgba(82, 121, 111, 0.25);
+  border-color: var(--rose-600);
+  box-shadow: 0 4px 14px rgba(201, 24, 74, 0.28);
 }
 
 .btn-primary:hover {
-  background-color: var(--deep-green);
-  border-color: var(--deep-green);
+  background-color: var(--wine-800);
+  border-color: var(--wine-800);
   color: #ffffff;
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(128, 15, 47, 0.3);
 }
 
 .btn-secondary {
   background-color: var(--bg-card);
-  color: var(--deep-green);
+  color: var(--wine-800);
   border-color: var(--border-color);
   box-shadow: var(--shadow-soft);
 }
 
 .btn-secondary:hover {
-  background-color: rgba(202, 210, 197, 0.35);
-  border-color: var(--deep-green);
-  color: var(--dark-blue-green);
+  background-color: var(--blossom-100);
+  border-color: var(--rose-600);
+  color: var(--wine-900);
   transform: translateY(-2px);
 }
 
@@ -314,7 +326,7 @@ a:hover {
 
 .about-lead {
   font-size: 1.08rem;
-  color: var(--dark-blue-green);
+  color: var(--wine-900);
   margin-bottom: 1rem;
   line-height: 1.7;
 }
@@ -340,7 +352,7 @@ a:hover {
   align-items: center;
   gap: 0.4rem;
   background-color: var(--bg-subtle);
-  color: var(--deep-green);
+  color: var(--wine-900);
   font-size: 0.88rem;
   font-weight: 500;
   padding: 0.4rem 0.85rem;
@@ -371,7 +383,7 @@ a:hover {
 
 .skill-card:hover {
   transform: translateY(-3px);
-  border-color: var(--soft-green);
+  border-color: var(--blush-400);
   box-shadow: var(--shadow-hover);
 }
 
@@ -379,7 +391,7 @@ a:hover {
   width: 48px;
   height: 48px;
   margin: 0 auto 0.75rem;
-  background-color: rgba(202, 210, 197, 0.4);
+  background-color: var(--blossom-100);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -389,7 +401,7 @@ a:hover {
 
 .skill-name {
   font-size: 1.15rem;
-  color: var(--dark-blue-green);
+  color: var(--text-title);
   margin-bottom: 0.25rem;
 }
 
@@ -400,8 +412,8 @@ a:hover {
 }
 
 .creative-skill-card {
-  background: linear-gradient(180deg, #ffffff 0%, rgba(202, 210, 197, 0.2) 100%);
-  border-color: var(--soft-green);
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 204, 213, 0.25) 100%);
+  border-color: var(--pink-300);
 }
 
 /* --- Education Section --- */
@@ -412,7 +424,7 @@ a:hover {
   padding: 2rem;
   box-shadow: var(--shadow-soft);
   position: relative;
-  border-left: 5px solid var(--muted-teal);
+  border-left: 5px solid var(--rose-600);
 }
 
 .edu-badge-row {
@@ -427,7 +439,7 @@ a:hover {
 .edu-tag {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--muted-teal);
+  color: var(--rose-600);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -435,8 +447,8 @@ a:hover {
 .edu-timeline {
   font-size: 0.85rem;
   font-weight: 600;
-  background-color: var(--bg-subtle);
-  color: var(--deep-green);
+  background-color: var(--blossom-100);
+  color: var(--wine-900);
   padding: 0.25rem 0.75rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-color);
@@ -444,21 +456,21 @@ a:hover {
 
 .edu-title {
   font-size: 1.25rem;
-  color: var(--dark-blue-green);
+  color: var(--text-title);
   margin-bottom: 0.2rem;
 }
 
 .edu-specialization {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--muted-teal);
+  color: var(--crimson-700);
   margin-bottom: 0.5rem;
 }
 
 .edu-college {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--deep-green);
+  color: var(--wine-800);
   margin-bottom: 0.75rem;
 }
 
@@ -489,7 +501,7 @@ a:hover {
 
 .project-card:hover {
   transform: translateY(-3px);
-  border-color: var(--soft-green);
+  border-color: var(--pink-300);
   box-shadow: var(--shadow-hover);
 }
 
@@ -504,11 +516,11 @@ a:hover {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 600;
-  background-color: rgba(132, 169, 140, 0.25);
-  color: var(--deep-green);
+  background-color: var(--blossom-100);
+  color: var(--wine-900);
   padding: 0.2rem 0.65rem;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(132, 169, 140, 0.5);
+  border: 1px solid var(--border-color);
 }
 
 .project-category {
@@ -519,7 +531,7 @@ a:hover {
 
 .project-title {
   font-size: 1.18rem;
-  color: var(--dark-blue-green);
+  color: var(--text-title);
   margin-bottom: 0.6rem;
 }
 
@@ -541,7 +553,7 @@ a:hover {
 .project-tech {
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--muted-teal);
+  color: var(--rose-600);
 }
 
 .project-status-note {
@@ -576,8 +588,8 @@ a:hover {
 }
 
 .photo-placeholder-card {
-  background-color: rgba(202, 210, 197, 0.2);
-  border: 1.5px dashed var(--soft-green);
+  background-color: rgba(255, 204, 213, 0.25);
+  border: 1.5px dashed var(--pink-300);
   border-radius: var(--radius-md);
   padding: 1.75rem 1.25rem;
   text-align: center;
@@ -585,7 +597,8 @@ a:hover {
 }
 
 .photo-placeholder-card:hover {
-  background-color: rgba(202, 210, 197, 0.35);
+  background-color: rgba(255, 204, 213, 0.45);
+  border-color: var(--rose-600);
   transform: translateY(-2px);
 }
 
@@ -596,7 +609,7 @@ a:hover {
 
 .placeholder-title {
   font-size: 1.05rem;
-  color: var(--dark-blue-green);
+  color: var(--text-title);
   margin-bottom: 0.35rem;
 }
 
@@ -611,7 +624,7 @@ a:hover {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--deep-green);
+  color: var(--wine-900);
   background-color: #ffffff;
   padding: 0.2rem 0.6rem;
   border-radius: var(--radius-pill);
@@ -646,8 +659,8 @@ a:hover {
 }
 
 .contact-link-item:hover {
-  background-color: rgba(202, 210, 197, 0.45);
-  border-color: var(--muted-teal);
+  background-color: var(--blossom-100);
+  border-color: var(--rose-600);
   transform: translateY(-2px);
 }
 
@@ -663,13 +676,13 @@ a:hover {
 
 .contact-item-title {
   font-size: 1rem;
-  color: var(--dark-blue-green);
+  color: var(--text-title);
   margin-bottom: 0.15rem;
 }
 
 .contact-item-val {
   font-size: 0.86rem;
-  color: var(--deep-green);
+  color: var(--wine-900);
   word-break: break-all;
 }
 
@@ -684,7 +697,7 @@ a:hover {
   padding-top: 1.25rem;
   border-top: 1px solid var(--border-color);
   font-size: 0.98rem;
-  color: var(--deep-green);
+  color: var(--wine-800);
 }
 
 /* --- Footer --- */
@@ -705,7 +718,7 @@ a:hover {
 .footer-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--dark-blue-green);
+  color: var(--text-title);
 }
 
 .footer-copy {
@@ -727,17 +740,17 @@ a:hover {
 }
 
 .footer-links a:hover {
-  color: var(--dark-blue-green);
+  color: var(--text-title);
 }
 
 .back-to-top {
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--muted-teal);
+  color: var(--rose-600);
 }
 
 .back-to-top:hover {
-  color: var(--dark-blue-green);
+  color: var(--wine-900);
 }
 
 /* --- Scroll-Reveal Subtle Animation --- */
@@ -758,7 +771,7 @@ a:hover {
     display: block;
   }
 
-  /* Hamburger toggle transformation into 'X' */
+  /* Hamburger toggle animation into 'X' */
   .nav-toggle.open .hamburger-bar:nth-child(1) {
     transform: translateY(6.5px) rotate(45deg);
   }

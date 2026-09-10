@@ -4,12 +4,17 @@ A warm, creative, and modern personal portfolio website for **Vaishnavi Soni**, 
 
 ## 🎨 Visual Identity
 - **Typography:** [Fredoka](https://fonts.google.com/specimen/Fredoka) (Google Fonts)
-- **Palette (Earthy Warm Palette):**
-  - `#CAD2C5` — Light Sage (Backgrounds & soft badges)
-  - `#84A98C` — Soft Green (Accents & highlights)
-  - `#52796F` — Muted Teal (Buttons & interactive elements)
-  - `#354F52` — Deep Green (Headings & body text)
-  - `#2F3E46` — Dark Blue-Green (Titles & footer text)
+- **Palette (Rose, Berry & Wine Theme):**
+  - `#590d22` — Deepest Wine / Dark Berry
+  - `#800f2f` — Rich Burgundy
+  - `#a4133c` — Vivid Crimson
+  - `#c9184a` — Radiant Rose
+  - `#ff4d6d` — Bright Coral Pink
+  - `#ff758f` — Warm Blush
+  - `#ff8fa3` — Soft Rose
+  - `#ffb3c1` — Delicate Pink
+  - `#ffccd5` — Pale Cherry Blossom
+  - `#fff0f3` — Warm Porcelain / Soft Cream Pink
 
 ## 📁 Sections
 1. **Hero:** Greeting, student identity, and clear call-to-action buttons.
