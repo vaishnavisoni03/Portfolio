@@ -1,56 +1,56 @@
 /* ==========================================================================
    Vaishnavi Soni - Personal Portfolio Stylesheet
-   Palette: coolors.co/palette/780000-c1121f-fdf0d5-003049-669bbc
-   #780000 — Deep Maroon
-   #c1121f — Vivid Crimson
-   #fdf0d5 — Warm Cream
-   #003049 — Prussian Blue / Deep Navy
-   #669bbc — Steel Blue
+   Palette: coolors.co/palette/0a1128-001f54-034078-1282a2-fefcfb
+   #0a1128 — Deep Midnight Navy
+   #001f54 — Oxford Blue
+   #034078 — Cobalt Blue
+   #1282a2 — Vivid Cerulean / Teal-Blue
+   #fefcfb — Alabaster Crisp Off-White
    Typography: PT Sans (UI & Body) & Newsreader (Editorial Headings)
    ========================================================================== */
 
 /* --- Design Tokens & Color Palette --- */
 :root {
   /* Exact Coolors Palette Tokens */
-  --color-maroon: #780000;
-  --color-crimson: #c1121f;
-  --color-cream: #fdf0d5;
-  --color-navy: #003049;
-  --color-steel: #669bbc;
+  --color-midnight: #0a1128;                     /* Deep Midnight Navy */
+  --color-oxford: #001f54;                       /* Oxford Blue */
+  --color-cobalt: #034078;                       /* Cobalt Blue */
+  --color-cerulean: #1282a2;                     /* Vivid Cerulean */
+  --color-alabaster: #fefcfb;                    /* Crisp Alabaster White */
 
   /* Typography */
   --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
   --font-sans: 'PT Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Semantic UI Tokens */
-  --bg-page: #fdf0d5;                            /* Warm cream page background */
-  --bg-card: #ffffff;                            /* Crisp white for readable cards */
-  --bg-subtle: rgba(102, 155, 188, 0.15);        /* Soft steel blue tint */
-  --bg-badge: rgba(0, 48, 73, 0.07);            /* Subtle navy tint */
-  --bg-pill: rgba(253, 240, 213, 0.85);
+  --bg-page: #fefcfb;                            /* Crisp alabaster page background */
+  --bg-card: #ffffff;                            /* Pure white for elevated cards */
+  --bg-subtle: rgba(18, 130, 162, 0.1);          /* Cerulean soft wash */
+  --bg-badge: rgba(0, 31, 84, 0.06);            /* Oxford blue subtle tint */
+  --bg-pill: rgba(254, 252, 251, 0.9);
 
-  --text-title: #003049;                         /* Deep navy for primary titles */
-  --text-heading: #780000;                       /* Deep maroon for section headers */
-  --text-body: #003049;                          /* Deep navy for body reading */
-  --text-muted: #435b66;                         /* Balanced muted slate-navy */
-  --text-accent: #c1121f;                        /* Vivid crimson accent */
+  --text-title: #0a1128;                         /* Deep midnight navy for titles */
+  --text-heading: #001f54;                       /* Oxford blue for section headers */
+  --text-body: #0a1128;                          /* Deep midnight navy for readable body */
+  --text-muted: #034078;                         /* Cobalt blue for secondary text */
+  --text-accent: #1282a2;                        /* Cerulean for highlights */
 
-  --interactive: #c1121f;                        /* Crimson for primary buttons & links */
-  --interactive-hover: #780000;                  /* Deep maroon on hover */
-  --interactive-navy: #003049;
+  --interactive: #1282a2;                        /* Cerulean for buttons & links */
+  --interactive-hover: #034078;                  /* Cobalt blue on hover */
+  --interactive-dark: #001f54;                   /* Oxford blue button option */
 
-  --border-light: rgba(0, 48, 73, 0.14);         /* Subtle navy hairline borders */
-  --border-card: rgba(0, 48, 73, 0.1);
-  --border-hover: #669bbc;                       /* Steel blue hover outlines */
+  --border-light: rgba(10, 17, 40, 0.12);        /* Hairline navy borders */
+  --border-card: rgba(10, 17, 40, 0.08);
+  --border-hover: #1282a2;                       /* Cerulean hover border */
 
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 18px;
   --radius-pill: 50px;
 
-  --shadow-sm: 0 2px 8px rgba(0, 48, 73, 0.05);
-  --shadow-md: 0 8px 24px rgba(0, 48, 73, 0.08);
-  --shadow-hover: 0 12px 30px rgba(0, 48, 73, 0.13);
+  --shadow-sm: 0 2px 8px rgba(10, 17, 40, 0.04);
+  --shadow-md: 0 8px 24px rgba(10, 17, 40, 0.07);
+  --shadow-hover: 0 12px 30px rgba(10, 17, 40, 0.13);
 
   --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -112,7 +112,7 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(253, 240, 213, 0.94);
+  background-color: rgba(254, 252, 251, 0.94);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-light);
   padding: 1.1rem 0;
@@ -141,8 +141,8 @@ a:hover {
   justify-content: center;
   width: 28px;
   height: 28px;
-  background-color: var(--color-navy);
-  color: var(--color-cream);
+  background-color: var(--color-midnight);
+  color: var(--color-alabaster);
   font-family: var(--font-serif);
   font-size: 0.95rem;
   font-weight: 600;
@@ -151,11 +151,11 @@ a:hover {
 }
 
 .logo:hover .logo-mark {
-  background-color: var(--color-crimson);
+  background-color: var(--color-cerulean);
 }
 
 .logo:hover {
-  color: var(--color-crimson);
+  color: var(--color-cerulean);
 }
 
 .nav-menu {
@@ -177,8 +177,8 @@ a:hover {
 
 .nav-link:hover,
 .nav-link.active-link {
-  color: var(--color-crimson);
-  background-color: rgba(102, 155, 188, 0.22);
+  color: var(--color-cerulean);
+  background-color: rgba(18, 130, 162, 0.12);
 }
 
 /* Mobile Hamburger Toggle */
@@ -213,8 +213,8 @@ a:hover {
 .section-badge {
   display: inline-block;
   font-family: var(--font-sans);
-  background-color: rgba(0, 48, 73, 0.07);
-  color: var(--color-maroon);
+  background-color: rgba(18, 130, 162, 0.1);
+  color: var(--color-oxford);
   font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -252,7 +252,7 @@ a:hover {
   align-items: center;
   gap: 0.55rem;
   background-color: #ffffff;
-  color: var(--color-navy);
+  color: var(--color-midnight);
   font-family: var(--font-sans);
   font-size: 0.86rem;
   font-weight: 700;
@@ -266,7 +266,7 @@ a:hover {
 .pill-dot {
   width: 8px;
   height: 8px;
-  background-color: var(--color-crimson);
+  background-color: var(--color-cerulean);
   border-radius: 50%;
   display: inline-block;
 }
@@ -281,7 +281,7 @@ a:hover {
 }
 
 .hero-name {
-  color: var(--color-crimson);
+  color: var(--color-cerulean);
   font-style: italic;
 }
 
@@ -289,7 +289,7 @@ a:hover {
   font-family: var(--font-sans);
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--color-maroon);
+  color: var(--color-oxford);
   margin-bottom: 1.35rem;
   letter-spacing: 0.01em;
 }
@@ -323,31 +323,31 @@ a:hover {
 }
 
 .btn-primary {
-  background-color: var(--color-crimson);
+  background-color: var(--color-cerulean);
   color: #ffffff;
-  border-color: var(--color-crimson);
-  box-shadow: 0 4px 14px rgba(193, 18, 31, 0.28);
+  border-color: var(--color-cerulean);
+  box-shadow: 0 4px 14px rgba(18, 130, 162, 0.3);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-maroon);
-  border-color: var(--color-maroon);
+  background-color: var(--color-cobalt);
+  border-color: var(--color-cobalt);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(120, 0, 0, 0.3);
+  box-shadow: 0 6px 18px rgba(3, 64, 120, 0.35);
 }
 
 .btn-secondary {
   background-color: #ffffff;
-  color: var(--color-navy);
+  color: var(--color-midnight);
   border-color: var(--border-light);
   box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
   background-color: #ffffff;
-  border-color: var(--color-crimson);
-  color: var(--color-crimson);
+  border-color: var(--color-cerulean);
+  color: var(--color-cerulean);
   transform: translateY(-2px);
 }
 
@@ -362,7 +362,7 @@ a:hover {
 
 .about-lead {
   font-size: 1.12rem;
-  color: var(--color-navy);
+  color: var(--color-oxford);
   margin-bottom: 1.15rem;
   line-height: 1.72;
   font-weight: 700;
@@ -385,7 +385,7 @@ a:hover {
 }
 
 .highlight-chip {
-  background-color: rgba(253, 240, 213, 0.55);
+  background-color: rgba(18, 130, 162, 0.08);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
   padding: 0.7rem 0.95rem;
@@ -404,7 +404,7 @@ a:hover {
 
 .highlight-chip strong {
   font-size: 0.92rem;
-  color: var(--color-navy);
+  color: var(--color-midnight);
   font-weight: 700;
 }
 
@@ -442,15 +442,15 @@ a:hover {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  background-color: rgba(102, 155, 188, 0.2);
-  color: var(--color-navy);
+  background-color: rgba(18, 130, 162, 0.12);
+  color: var(--color-oxford);
   padding: 0.2rem 0.6rem;
   border-radius: var(--radius-sm);
 }
 
 .creative-tag {
-  background-color: rgba(193, 18, 31, 0.12);
-  color: var(--color-crimson);
+  background-color: rgba(3, 64, 120, 0.12);
+  color: var(--color-cerulean);
 }
 
 .skill-name {
@@ -469,7 +469,7 @@ a:hover {
 }
 
 .creative-skill-card {
-  border-left: 3px solid var(--color-crimson);
+  border-left: 3px solid var(--color-cerulean);
 }
 
 /* --- Education Section --- */
@@ -479,7 +479,7 @@ a:hover {
   border-radius: var(--radius-md);
   padding: 2.25rem;
   box-shadow: var(--shadow-sm);
-  border-left: 4px solid var(--color-crimson);
+  border-left: 4px solid var(--color-cerulean);
 }
 
 .edu-badge-row {
@@ -494,7 +494,7 @@ a:hover {
 .edu-tag {
   font-size: 0.76rem;
   font-weight: 700;
-  color: var(--color-crimson);
+  color: var(--color-cerulean);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -502,8 +502,8 @@ a:hover {
 .edu-timeline {
   font-size: 0.84rem;
   font-weight: 700;
-  background-color: rgba(0, 48, 73, 0.08);
-  color: var(--color-navy);
+  background-color: rgba(0, 31, 84, 0.08);
+  color: var(--color-midnight);
   padding: 0.25rem 0.75rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-light);
@@ -518,14 +518,14 @@ a:hover {
 .edu-specialization {
   font-size: 0.98rem;
   font-weight: 700;
-  color: var(--color-maroon);
+  color: var(--color-oxford);
   margin-bottom: 0.5rem;
 }
 
 .edu-college {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--color-navy);
+  color: var(--color-midnight);
   margin-bottom: 0.85rem;
 }
 
@@ -571,8 +571,8 @@ a:hover {
   display: inline-block;
   font-size: 0.74rem;
   font-weight: 700;
-  background-color: rgba(193, 18, 31, 0.1);
-  color: var(--color-crimson);
+  background-color: rgba(18, 130, 162, 0.12);
+  color: var(--color-cerulean);
   padding: 0.2rem 0.65rem;
   border-radius: var(--radius-sm);
   letter-spacing: 0.02em;
@@ -608,7 +608,7 @@ a:hover {
 .project-tech {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--color-crimson);
+  color: var(--color-cerulean);
 }
 
 .project-status-note {
@@ -643,8 +643,8 @@ a:hover {
 }
 
 .photo-placeholder-card {
-  background-color: rgba(253, 240, 213, 0.45);
-  border: 1px dashed rgba(102, 155, 188, 0.7);
+  background-color: rgba(18, 130, 162, 0.06);
+  border: 1px dashed rgba(18, 130, 162, 0.45);
   border-radius: var(--radius-md);
   padding: 1.75rem 1.35rem;
   transition: var(--transition);
@@ -653,8 +653,8 @@ a:hover {
 }
 
 .photo-placeholder-card:hover {
-  background-color: rgba(253, 240, 213, 0.85);
-  border-color: var(--color-crimson);
+  background-color: rgba(18, 130, 162, 0.12);
+  border-color: var(--color-cerulean);
   transform: translateY(-2px);
 }
 
@@ -664,7 +664,7 @@ a:hover {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-crimson);
+  color: var(--color-cerulean);
   margin-bottom: 0.5rem;
 }
 
@@ -685,7 +685,7 @@ a:hover {
   margin-top: auto;
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--color-maroon);
+  color: var(--color-oxford);
   font-style: italic;
 }
 
@@ -709,7 +709,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(253, 240, 213, 0.5);
+  background-color: rgba(18, 130, 162, 0.06);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   padding: 1.25rem;
@@ -718,7 +718,7 @@ a:hover {
 
 .contact-link-item:hover {
   background-color: #ffffff;
-  border-color: var(--color-crimson);
+  border-color: var(--color-cerulean);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -729,7 +729,7 @@ a:hover {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-crimson);
+  color: var(--color-cerulean);
   margin-bottom: 0.25rem;
 }
 
@@ -750,7 +750,7 @@ a:hover {
 
 .link-arrow {
   font-size: 1.15rem;
-  color: var(--color-crimson);
+  color: var(--color-cerulean);
   transition: transform 0.2s ease;
   margin-left: 0.5rem;
 }
@@ -765,7 +765,7 @@ a:hover {
   border-top: 1px solid var(--border-light);
   font-family: var(--font-serif);
   font-size: 1.1rem;
-  color: var(--color-maroon);
+  color: var(--color-oxford);
   font-style: italic;
 }
 
@@ -810,17 +810,17 @@ a:hover {
 }
 
 .footer-links a:hover {
-  color: var(--color-crimson);
+  color: var(--color-cerulean);
 }
 
 .back-to-top {
   font-size: 0.88rem;
   font-weight: 700;
-  color: var(--color-crimson);
+  color: var(--color-cerulean);
 }
 
 .back-to-top:hover {
-  color: var(--color-maroon);
+  color: var(--color-cobalt);
 }
 
 /* --- Scroll-Reveal Animation --- */
