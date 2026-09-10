@@ -4,19 +4,14 @@ A professional, editorial, and modern personal portfolio website for **Vaishnavi
 
 ## 🎨 Visual Identity
 - **Typography:**
+  - **Body & UI Elements:** [PT Sans](https://fonts.google.com/specimen/PT+Sans) (Sans-Serif)
   - **Headings & Editorial Titles:** [Newsreader](https://fonts.google.com/specimen/Newsreader) (Serif)
-  - **Body & UI Elements:** [Manrope](https://fonts.google.com/specimen/Manrope) (Sans-Serif)
-- **Palette (Coolors Rose, Wine & Cherry Blossom):**
-  - `#590d22` — Deepest Wine / Dark Berry
-  - `#800f2f` — Rich Burgundy
-  - `#a4133c` — Vivid Crimson
-  - `#c9184a` — Radiant Rose
-  - `#ff4d6d` — Bright Coral Pink
-  - `#ff758f` — Warm Blush
-  - `#ff8fa3` — Soft Rose
-  - `#ffb3c1` — Delicate Pink
-  - `#ffccd5` — Pale Cherry Blossom
-  - `#fff0f3` — Warm Porcelain / Soft Cream Pink
+- **Palette ([Coolors Link](https://coolors.co/palette/780000-c1121f-fdf0d5-003049-669bbc)):**
+  - `#003049` — Prussian Blue / Deep Navy (Titles, body text, and brand)
+  - `#669bbc` — Steel Blue (Borders, subtle tags, and highlights)
+  - `#fdf0d5` — Warm Cream (Page background)
+  - `#c1121f` — Vivid Crimson (Interactive buttons and links)
+  - `#780000` — Deep Maroon (Section headers and hover states)
 
 ## 📁 Sections
 1. **Hero:** Editorial greeting, student identity, and clear call-to-action buttons.
