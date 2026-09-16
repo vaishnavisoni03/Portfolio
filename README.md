@@ -28,8 +28,8 @@ Built with a luxurious **Dark Burgundy & Rose Gold** aesthetic, featuring froste
 2. **About Me:** Balance between engineering fundamentals and creative perspective.
 3. **Education & Schooling:**
    - **B.Tech CSE (AI & ML)** — JECRC University, Jaipur (2026–2030, Semester 1)
-   - **Senior Secondary School (Class XII)** — CBSE Science Stream (PCM + Computer Science, 92.4% Academic Distinction)
-   - **Secondary School (Class X)** — CBSE Foundations in Sciences & Mathematics (94.8% High Distinction)
+   - **Senior Secondary School (Class XII)** — CBSE Science Stream (PCM + Computer Science, 80% First Division)
+   - **Secondary School (Class X)** — CBSE Foundations in Sciences & Mathematics (91.2% Distinction)
 4. **4-Year CSE (AI & ML) Strategic Roadmap:**
    - **Year 1 (2026–2027) — Foundations & Computational Logic:** C Programming, Calculus, Discrete Math, Digital Logic, OOP with Python.
    - **Year 2 (2027–2028) — Core Systems & Machine Learning:** Advanced DSA, Probability & Statistics, DBMS, Operating Systems, Scikit-Learn.
