@@ -1,28 +1,69 @@
 # Vaishnavi Soni - Personal Portfolio
 
-A professional, editorial, and modern personal portfolio website for **Vaishnavi Soni**, a first-semester B.Tech CSE (AI & ML) student at JECRC University, Jaipur (Batch 2026–2030).
+A modern, editorial, and interactive personal portfolio website for **Vaishnavi Soni**, a first-semester B.Tech CSE (AI & ML) student at JECRC University, Jaipur (Batch 2026–2030).
 
-## 🎨 Visual Identity
+Built with a luxurious **Dark Burgundy & Rose Gold** aesthetic, featuring frosted glassmorphism, responsive micro-interactions, an ambient canvas particle system, and modular components.
+
+---
+
+## 🎨 Visual Identity & Theme
+
+- **Mode:** Dark Burgundy / Velvet Wine
 - **Typography:**
-  - **Body & UI Elements:** [PT Sans](https://fonts.google.com/specimen/PT+Sans) (Sans-Serif)
   - **Headings & Editorial Titles:** [Newsreader](https://fonts.google.com/specimen/Newsreader) (Serif)
-- **Palette ([Coolors Link](https://coolors.co/palette/0a1128-001f54-034078-1282a2-fefcfb)):**
-  - `#0a1128` — Deep Midnight Navy (Titles, body text, brand)
-  - `#001f54` — Oxford Blue (Section headers & accents)
-  - `#034078` — Cobalt Blue (Subtitles & hover states)
-  - `#1282a2` — Vivid Cerulean (Interactive buttons, links, highlights)
-  - `#fefcfb` — Alabaster Crisp Off-White (Clean page background)
+  - **Body & UI Elements:** [PT Sans](https://fonts.google.com/specimen/PT+Sans) (Sans-Serif)
+- **Palette:**
+  - `#0f050b` — Deep Velvet Noir (Base page background)
+  - `#1c0814` / `#230c1a` — Dark Burgundy Wine (Frosted card surfaces)
+  - `#9e1c3e` / `#d42b5d` / `#f23d72` — Vibrant Crimson & Burgundy (Buttons, glowing accents)
+  - `#f5caa9` — Rose Gold (Highlights, badges, micro-borders)
+  - `#fff2f6` — Crisp Champagne Rose White (Headings & titles)
+  - `#e8d7e0` — Soft Rose-Silver (High-contrast readable body text)
+
+---
+
+## ⚡ Interactive Features
+
+1. **Ambient Particle Canvas:** Subtle floating orbs and connecting constellations with mouse repulsion physics.
+2. **Reading Progress Bar & Circular Back-to-Top:** Dual scroll tracking indicators:
+   - Shimmering gradient reading progress bar fixed at the top of the viewport.
+   - Floating circular SVG progress ring around the "Back to Top" button.
+3. **Interactive Skill Filtering:** Category filter tabs (`All`, `Languages`, `Web Tech`, `AI & ML`, `Creative Arts`) with animated progress meters.
+4. **Interactive Projects Showcase:**
+   - Filterable project grid (`Python & Logic`, `Web Development`, `Machine Learning`).
+   - Dynamic **Project Details Modal** displaying technical breakdowns, architecture notes, and repository links.
+5. **Creative Photography Gallery & Lightbox:**
+   - Real curated photography showcasing architectural geometry, botanical macros, and light studies.
+   - Full-screen responsive **Lightbox Viewer** with keyboard `ESC` support and metadata.
+6. **Instant Email Copy & Quick Contact Form:**
+   - Single-click clipboard copy with tooltip state changes.
+   - Interactive message form with client-side feedback and glassmorphic toast notifications.
+7. **Responsive Navigation:** Smooth sticky header with active scroll highlighting and animated mobile drawer.
+
+---
 
 ## 📁 Sections
-1. **Hero:** Editorial greeting, student identity, and clear call-to-action buttons.
-2. **About Me:** Balancing computer science foundations and visual creativity.
-3. **Skills:** Python, C, HTML5, CSS3, JavaScript, AI/ML, and Photography.
+
+1. **Hero:** Editorial greeting, student identity badge, and glowing call-to-action buttons.
+2. **About Me:** Balance between engineering fundamentals and creative perspective.
+3. **Skills & Interests:** Python, C, HTML5, CSS3, JavaScript, AI/ML, and Photography with proficiency meters.
 4. **Education:** B.Tech CSE (AI & ML), JECRC University, Jaipur (2026–2030).
-5. **Projects:** 3 structured project cards marked as "Coming Soon".
-6. **Creative Side:** Minimalist cards highlighting photography, framing, and visual studies.
-7. **Contact:** Email, LinkedIn, GitHub direct action cards, and an inspiring quote.
+5. **Featured Projects:** Interactive project cards with deep-dive modal dialogs.
+6. **Creative Side:** Photography gallery with full-screen Lightbox viewer.
+7. **Contact:** One-click copy email, social links, quick contact form, and closing quote.
+
+---
 
 ## 🛠️ Tech Stack
-- Pure **HTML5**
-- Vanilla **CSS3** (CSS Variables, Flexbox, Grid, Responsive Media Queries)
-- Vanilla **JavaScript** (Mobile menu, Smooth scroll, Scroll-reveal, Active link highlight)
+
+- **HTML5:** Semantic markup, accessible ARIA roles, responsive meta tags.
+- **Vanilla CSS3:** Custom properties (CSS variables), glassmorphic backdrops, flexbox, CSS Grid.
+- **Vanilla JavaScript:** 100% dependency-free Canvas API, IntersectionObserver, and event handling.
+
+---
+
+## 🚀 Deployment
+
+The portfolio is hosted and deployed via GitHub Pages:
+- **Repository:** [vaishnavisoni03/Portfolio](https://github.com/vaishnavisoni03/Portfolio)
+- **Live URL:** [https://vaishnavisoni03.github.io/Portfolio/](https://vaishnavisoni03.github.io/Portfolio/)

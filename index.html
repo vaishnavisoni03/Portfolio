@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Personal portfolio of Vaishnavi Soni - B.Tech CSE (AI & ML) student at JECRC University, Jaipur.">
+  <meta name="description" content="Personal portfolio of Vaishnavi Soni - B.Tech CSE (AI & ML) student at JECRC University, Jaipur. Exploring algorithms, AI/ML, and visual arts in dark burgundy mode.">
   <title>Vaishnavi Soni | Portfolio</title>
   
-  <!-- Typography: Newsreader (Headings) & PT Sans (Body & UI) -->
+  <!-- Typography: Newsreader (Editorial Serif) & PT Sans (UI Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -16,23 +16,29 @@
 </head>
 <body>
 
+  <!-- Scroll Reading Progress Indicator -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Ambient Interactive Canvas -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
   <!-- Navigation Bar -->
   <header class="header" id="header">
     <div class="container nav-container">
-      <a href="#hero" class="logo">
+      <a href="#hero" class="logo" aria-label="Vaishnavi Soni Home">
         <span class="logo-mark">V</span>
         <span class="logo-text">Vaishnavi Soni</span>
       </a>
 
       <!-- Mobile hamburger toggle button -->
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
         <span class="hamburger-bar"></span>
         <span class="hamburger-bar"></span>
         <span class="hamburger-bar"></span>
       </button>
 
       <!-- Navigation links -->
-      <nav class="nav-menu" id="nav-menu">
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
         <a href="#about" class="nav-link">About</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="#education" class="nav-link">Education</a>
@@ -46,6 +52,7 @@
   <main>
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
+      <div class="hero-glow-orb" aria-hidden="true"></div>
       <div class="container hero-container reveal">
         <div class="hero-pill">
           <span class="pill-dot"></span>
@@ -67,8 +74,14 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View My Work</a>
-          <a href="#contact" class="btn btn-secondary">Let’s Connect</a>
+          <a href="#projects" class="btn btn-primary">
+            <span>View My Work</span>
+            <span aria-hidden="true">&darr;</span>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <span>Let’s Connect</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </div>
     </section>
@@ -77,7 +90,7 @@
     <section class="section" id="about">
       <div class="container reveal">
         <div class="section-title-wrap">
-          <span class="section-badge">Background</span>
+          <span class="section-badge">&#10022; Background</span>
           <h2 class="section-heading">About Me</h2>
         </div>
 
@@ -103,19 +116,19 @@
           <!-- Professional Highlight Chips -->
           <div class="about-highlights">
             <div class="highlight-chip">
-              <span class="chip-label">Program:</span>
+              <span class="chip-label">Program</span>
               <strong>B.Tech CSE (AI &amp; ML)</strong>
             </div>
             <div class="highlight-chip">
-              <span class="chip-label">University:</span>
+              <span class="chip-label">University</span>
               <strong>JECRC University, Jaipur</strong>
             </div>
             <div class="highlight-chip">
-              <span class="chip-label">Interests:</span>
+              <span class="chip-label">Interests</span>
               <strong>AI/ML, Code, Photography</strong>
             </div>
             <div class="highlight-chip">
-              <span class="chip-label">Timeline:</span>
+              <span class="chip-label">Timeline</span>
               <strong>2026 – 2030</strong>
             </div>
           </div>
@@ -127,75 +140,112 @@
     <section class="section" id="skills">
       <div class="container reveal">
         <div class="section-title-wrap">
-          <span class="section-badge">Capabilities</span>
+          <span class="section-badge">&#9733; Capabilities</span>
           <h2 class="section-heading">Skills &amp; Interests</h2>
           <p class="section-desc">
-            Core technical proficiencies and creative disciplines I actively practice in my studies.
+            Core technical proficiencies and creative disciplines I actively practice in my studies. Filter by category to explore.
           </p>
         </div>
 
-        <div class="skills-grid">
+        <!-- Interactive Skill Category Filter -->
+        <div class="filter-bar" id="skills-filter">
+          <button class="filter-btn active" data-filter="all">All Skills</button>
+          <button class="filter-btn" data-filter="languages">Languages</button>
+          <button class="filter-btn" data-filter="web">Web Tech</button>
+          <button class="filter-btn" data-filter="ai">AI &amp; ML</button>
+          <button class="filter-btn" data-filter="creative">Creative Arts</button>
+        </div>
+
+        <div class="skills-grid" id="skills-grid">
           <!-- Skill: Python -->
-          <div class="skill-card">
+          <div class="skill-card" data-category="languages">
             <div class="skill-top">
               <span class="skill-tag">Language</span>
+              <span class="skill-level-badge">Core Focus</span>
             </div>
             <h3 class="skill-name">Python</h3>
             <p class="skill-level">Core Syntax &bull; Algorithms &bull; Logic Building</p>
+            <div class="skill-meter-wrap" title="Proficiency: 85%">
+              <div class="skill-meter-fill" style="width: 85%;"></div>
+            </div>
           </div>
 
           <!-- Skill: C -->
-          <div class="skill-card">
+          <div class="skill-card" data-category="languages">
             <div class="skill-top">
               <span class="skill-tag">Language</span>
+              <span class="skill-level-badge">Foundations</span>
             </div>
             <h3 class="skill-name">C</h3>
-            <p class="skill-level">Procedural Programming &bull; Foundations</p>
+            <p class="skill-level">Procedural Programming &bull; Memory &bull; Logic</p>
+            <div class="skill-meter-wrap" title="Proficiency: 75%">
+              <div class="skill-meter-fill" style="width: 75%;"></div>
+            </div>
           </div>
 
           <!-- Skill: HTML -->
-          <div class="skill-card">
+          <div class="skill-card" data-category="web">
             <div class="skill-top">
               <span class="skill-tag">Web</span>
+              <span class="skill-level-badge">Advanced</span>
             </div>
             <h3 class="skill-name">HTML5</h3>
-            <p class="skill-level">Semantic Structure &bull; Web Standards</p>
+            <p class="skill-level">Semantic Structure &bull; Web Accessibility &bull; SEO</p>
+            <div class="skill-meter-wrap" title="Proficiency: 90%">
+              <div class="skill-meter-fill" style="width: 90%;"></div>
+            </div>
           </div>
 
           <!-- Skill: CSS -->
-          <div class="skill-card">
+          <div class="skill-card" data-category="web">
             <div class="skill-top">
               <span class="skill-tag">Web</span>
+              <span class="skill-level-badge">Proficient</span>
             </div>
             <h3 class="skill-name">CSS3</h3>
-            <p class="skill-level">Modern Layouts &bull; Responsive Design</p>
+            <p class="skill-level">Modern Layouts &bull; Responsive Design &bull; Animations</p>
+            <div class="skill-meter-wrap" title="Proficiency: 88%">
+              <div class="skill-meter-fill" style="width: 88%;"></div>
+            </div>
           </div>
 
           <!-- Skill: JavaScript -->
-          <div class="skill-card">
+          <div class="skill-card" data-category="web">
             <div class="skill-top">
               <span class="skill-tag">Web</span>
+              <span class="skill-level-badge">Intermediate</span>
             </div>
             <h3 class="skill-name">JavaScript</h3>
-            <p class="skill-level">DOM Manipulation &bull; Vanilla Interactions</p>
+            <p class="skill-level">DOM Manipulation &bull; Vanilla Interactions &bull; Async</p>
+            <div class="skill-meter-wrap" title="Proficiency: 80%">
+              <div class="skill-meter-fill" style="width: 80%;"></div>
+            </div>
           </div>
 
           <!-- Skill: AI/ML -->
-          <div class="skill-card">
+          <div class="skill-card" data-category="ai">
             <div class="skill-top">
               <span class="skill-tag">Specialization</span>
+              <span class="skill-level-badge">Active Study</span>
             </div>
             <h3 class="skill-name">AI &amp; Machine Learning</h3>
-            <p class="skill-level">Foundational Theory &bull; Data Exploration</p>
+            <p class="skill-level">Foundational Theory &bull; Data Exploration &bull; Models</p>
+            <div class="skill-meter-wrap" title="Proficiency: 72%">
+              <div class="skill-meter-fill" style="width: 72%;"></div>
+            </div>
           </div>
 
           <!-- Skill: Photography -->
-          <div class="skill-card creative-skill-card">
+          <div class="skill-card creative-skill-card" data-category="creative">
             <div class="skill-top">
               <span class="skill-tag creative-tag">Creative</span>
+              <span class="skill-level-badge">Visual Craft</span>
             </div>
             <h3 class="skill-name">Photography</h3>
-            <p class="skill-level">Composition &bull; Visual Framing &bull; Light</p>
+            <p class="skill-level">Composition &bull; Visual Framing &bull; Natural Light</p>
+            <div class="skill-meter-wrap" title="Proficiency: 92%">
+              <div class="skill-meter-fill" style="width: 92%;"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -205,7 +255,7 @@
     <section class="section" id="education">
       <div class="container reveal">
         <div class="section-title-wrap">
-          <span class="section-badge">Academics</span>
+          <span class="section-badge">&#9670; Academics</span>
           <h2 class="section-heading">Education</h2>
         </div>
 
@@ -229,62 +279,85 @@
     <section class="section" id="projects">
       <div class="container reveal">
         <div class="section-title-wrap">
-          <span class="section-badge">Portfolio</span>
+          <span class="section-badge">&#9783; Portfolio</span>
           <h2 class="section-heading">Featured Projects</h2>
           <p class="section-desc">
-            Academic problem sets, experiments, and exploratory projects developed during my studies.
+            Academic problem sets, experiments, and exploratory projects developed during my studies. Click any card to view detailed specifications.
           </p>
         </div>
 
-        <div class="projects-grid">
+        <!-- Interactive Project Category Filter -->
+        <div class="filter-bar" id="projects-filter">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="algorithms">Python &amp; Logic</button>
+          <button class="filter-btn" data-filter="web">Web Development</button>
+          <button class="filter-btn" data-filter="ai">Machine Learning</button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
           <!-- Project Card 1 -->
-          <article class="project-card">
-            <div class="project-card-header">
-              <span class="status-tag">Coming Soon</span>
-              <span class="project-category">Python &bull; Logic</span>
+          <article class="project-card" data-category="algorithms" data-project-id="1">
+            <div>
+              <div class="project-card-header">
+                <span class="status-tag">Coming Soon</span>
+                <span class="project-category">Python &bull; Logic</span>
+              </div>
+              <h3 class="project-title">Algorithmic Foundations &amp; Lab Solutions</h3>
+              <p class="project-desc">
+                An algorithmic problem-solving project implementing foundational data structures and mathematical 
+                routines in Python. Built as part of first-semester lab coursework.
+              </p>
             </div>
-            <h3 class="project-title">[Project 01 Title]</h3>
-            <p class="project-desc">
-              An algorithmic problem-solving project implementing foundational data structures and mathematical 
-              routines in Python. Built as part of first-semester lab coursework.
-            </p>
             <div class="project-footer">
               <span class="project-tech">Python &bull; Algorithmic Foundations</span>
-              <span class="project-status-note">In Progress &bull; 2026</span>
+              <div class="project-actions-row">
+                <span class="project-status-note">In Progress &bull; 2026</span>
+                <button class="project-explore-btn" aria-label="Explore Project 1 details">Explore &rarr;</button>
+              </div>
             </div>
           </article>
 
           <!-- Project Card 2 -->
-          <article class="project-card">
-            <div class="project-card-header">
-              <span class="status-tag">Coming Soon</span>
-              <span class="project-category">Web Development</span>
+          <article class="project-card" data-category="web" data-project-id="2">
+            <div>
+              <div class="project-card-header">
+                <span class="status-tag">Active</span>
+                <span class="project-category">Web Development</span>
+              </div>
+              <h3 class="project-title">Personal Portfolio Website</h3>
+              <p class="project-desc">
+                A minimalist, responsive front-end project centered on clean semantic HTML, modular CSS 
+                architecture, dark burgundy styling, and accessible vanilla JavaScript interactions.
+              </p>
             </div>
-            <h3 class="project-title">[Project 02 Title]</h3>
-            <p class="project-desc">
-              A minimalist, responsive front-end project centered on clean semantic HTML, modular CSS 
-              architecture, and accessible vanilla JavaScript interactions.
-            </p>
             <div class="project-footer">
               <span class="project-tech">HTML5 &bull; CSS3 &bull; JavaScript</span>
-              <span class="project-status-note">In Progress &bull; 2026</span>
+              <div class="project-actions-row">
+                <span class="project-status-note">Live &bull; 2026</span>
+                <button class="project-explore-btn" aria-label="Explore Project 2 details">Explore &rarr;</button>
+              </div>
             </div>
           </article>
 
           <!-- Project Card 3 -->
-          <article class="project-card">
-            <div class="project-card-header">
-              <span class="status-tag">Coming Soon</span>
-              <span class="project-category">Machine Learning</span>
+          <article class="project-card" data-category="ai" data-project-id="3">
+            <div>
+              <div class="project-card-header">
+                <span class="status-tag">Planned</span>
+                <span class="project-category">Machine Learning</span>
+              </div>
+              <h3 class="project-title">Data Insights &amp; Predictive ML Exploration</h3>
+              <p class="project-desc">
+                An introductory data exploration and machine learning experiment focusing on dataset analysis, 
+                statistical evaluation, and baseline model training.
+              </p>
             </div>
-            <h3 class="project-title">[Project 03 Title]</h3>
-            <p class="project-desc">
-              An introductory data exploration and machine learning experiment focusing on dataset analysis, 
-              statistical evaluation, and baseline model training.
-            </p>
             <div class="project-footer">
               <span class="project-tech">Python &bull; Data Analysis &bull; AI</span>
-              <span class="project-status-note">Planned &bull; 2026</span>
+              <div class="project-actions-row">
+                <span class="project-status-note">Planned &bull; 2026</span>
+                <button class="project-explore-btn" aria-label="Explore Project 3 details">Explore &rarr;</button>
+              </div>
             </div>
           </article>
         </div>
@@ -295,10 +368,10 @@
     <section class="section" id="creative">
       <div class="container reveal">
         <div class="section-title-wrap">
-          <span class="section-badge">Visual Exploration</span>
+          <span class="section-badge">&#9673; Visual Exploration</span>
           <h2 class="section-heading">Creative Side</h2>
           <p class="section-desc">
-            Photography and creative pursuits that balance analytical thinking with visual aesthetics.
+            Photography and visual pursuits that balance analytical thinking with artistic intuition. Click on any photograph to view in full resolution.
           </p>
         </div>
 
@@ -306,33 +379,67 @@
           <div class="creative-intro">
             <p class="creative-text">
               Photography provides a disciplined way to observe perspective, balance, and quiet geometry in daily life. 
-              The cards below will showcase curated selections of my visual captures as I publish new series.
+              The gallery below showcases curated selections of my visual captures exploring modern architectural lines, 
+              intricate natural textures, and light studies.
             </p>
           </div>
 
           <div class="creative-grid">
-            <!-- Photo Placeholder 1 -->
-            <div class="photo-placeholder-card">
-              <span class="placeholder-tag">Series 01</span>
-              <h4 class="placeholder-title">Frames &amp; Perspectives</h4>
-              <p class="placeholder-subtitle">Urban architecture, geometric angles, and contrast studies</p>
-              <span class="placeholder-status">[Curating Photographs]</span>
+            <!-- Photo 1 -->
+            <div class="photo-card" 
+                 data-lightbox-src="images/frames_perspectives.jpg"
+                 data-lightbox-title="Frames &amp; Perspectives"
+                 data-lightbox-desc="Modern geometric architecture, crisp angles, and deep contrasting sunlight studies.">
+              <div class="photo-img-wrap">
+                <img src="images/frames_perspectives.jpg" alt="Frames and Perspectives architectural photography" class="photo-img" loading="lazy">
+                <div class="photo-overlay">
+                  <span class="photo-view-badge">&#128269; View Full Photo</span>
+                </div>
+              </div>
+              <div class="photo-details">
+                <span class="photo-series-tag">Series 01</span>
+                <h3 class="photo-title">Frames &amp; Perspectives</h3>
+                <p class="photo-subtitle">Modern architecture, geometric angles, and contrast studies.</p>
+                <span class="photo-meta">&#128247; 35mm &bull; Natural Light</span>
+              </div>
             </div>
 
-            <!-- Photo Placeholder 2 -->
-            <div class="photo-placeholder-card">
-              <span class="placeholder-tag">Series 02</span>
-              <h4 class="placeholder-title">Nature &amp; Micro Details</h4>
-              <p class="placeholder-subtitle">Textures, natural foliage, and golden hour lighting</p>
-              <span class="placeholder-status">[Curating Photographs]</span>
+            <!-- Photo 2 -->
+            <div class="photo-card" 
+                 data-lightbox-src="images/nature_macro.jpg"
+                 data-lightbox-title="Nature &amp; Micro Details"
+                 data-lightbox-desc="Lush botanical foliage, morning dew drops, and soft golden hour bokeh.">
+              <div class="photo-img-wrap">
+                <img src="images/nature_macro.jpg" alt="Nature and micro botanical details photography" class="photo-img" loading="lazy">
+                <div class="photo-overlay">
+                  <span class="photo-view-badge">&#128269; View Full Photo</span>
+                </div>
+              </div>
+              <div class="photo-details">
+                <span class="photo-series-tag">Series 02</span>
+                <h3 class="photo-title">Nature &amp; Micro Details</h3>
+                <p class="photo-subtitle">Textures, natural foliage, and golden hour morning illumination.</p>
+                <span class="photo-meta">&#128247; 50mm Macro &bull; Golden Hour</span>
+              </div>
             </div>
 
-            <!-- Photo Placeholder 3 -->
-            <div class="photo-placeholder-card">
-              <span class="placeholder-tag">Series 03</span>
-              <h4 class="placeholder-title">Visual Studies</h4>
-              <p class="placeholder-subtitle">Digital layout experiments, graphic compositions &amp; design sketches</p>
-              <span class="placeholder-status">[Work In Progress]</span>
+            <!-- Photo 3 -->
+            <div class="photo-card" 
+                 data-lightbox-src="images/visual_studies.jpg"
+                 data-lightbox-title="Visual Studies &amp; Tone"
+                 data-lightbox-desc="Geometric play of light and shadow cast across textured minimalist surfaces in warm rose-burgundy tones.">
+              <div class="photo-img-wrap">
+                <img src="images/visual_studies.jpg" alt="Visual studies and geometric shadow play" class="photo-img" loading="lazy">
+                <div class="photo-overlay">
+                  <span class="photo-view-badge">&#128269; View Full Photo</span>
+                </div>
+              </div>
+              <div class="photo-details">
+                <span class="photo-series-tag">Series 03</span>
+                <h3 class="photo-title">Visual Studies</h3>
+                <p class="photo-subtitle">Digital layout experiments, graphic shadows &amp; chromatic warmth.</p>
+                <span class="photo-meta">&#128247; Fine Art Composition</span>
+              </div>
             </div>
           </div>
         </div>
@@ -343,7 +450,7 @@
     <section class="section" id="contact">
       <div class="container reveal">
         <div class="section-title-wrap">
-          <span class="section-badge">Get In Touch</span>
+          <span class="section-badge">&#9993; Get In Touch</span>
           <h2 class="section-heading">Let’s Connect</h2>
           <p class="section-desc">
             Feel free to reach out for academic collaborations, discussions on AI &amp; tech, or creative dialogue.
@@ -351,36 +458,66 @@
         </div>
 
         <div class="contact-card">
-          <div class="contact-links-grid">
-            <!-- Email -->
-            <a href="mailto:vaishnavi.soni@example.com" class="contact-link-item">
-              <div class="contact-item-content">
-                <span class="contact-type-label">Email</span>
-                <strong class="contact-item-title">vaishnavi.soni@example.com</strong>
-                <span class="edit-hint">[Replace with your email]</span>
+          <div class="contact-layout">
+            <!-- Direct Contact Links -->
+            <div class="contact-links-grid">
+              <!-- Email with Copy Action -->
+              <div class="contact-link-item">
+                <div class="contact-item-content">
+                  <span class="contact-type-label">Email</span>
+                  <strong class="contact-item-title" id="contact-email">vaishnavi.soni@example.com</strong>
+                </div>
+                <div class="contact-actions-inline">
+                  <button type="button" class="copy-btn" id="copy-email-btn" aria-label="Copy email address to clipboard" title="Copy to clipboard">
+                    Copy
+                  </button>
+                  <a href="mailto:vaishnavi.soni@example.com" class="link-arrow" aria-label="Send direct email">&rarr;</a>
+                </div>
               </div>
-              <span class="link-arrow">&rarr;</span>
-            </a>
 
-            <!-- LinkedIn -->
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-link-item">
-              <div class="contact-item-content">
-                <span class="contact-type-label">LinkedIn</span>
-                <strong class="contact-item-title">linkedin.com/in/vaishnavi-soni</strong>
-                <span class="edit-hint">[Replace with your profile link]</span>
-              </div>
-              <span class="link-arrow">&rarr;</span>
-            </a>
+              <!-- LinkedIn -->
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+                <div class="contact-item-content">
+                  <span class="contact-type-label">LinkedIn</span>
+                  <strong class="contact-item-title">linkedin.com/in/vaishnavi-soni</strong>
+                </div>
+                <span class="link-arrow">&rarr;</span>
+              </a>
 
-            <!-- GitHub -->
-            <a href="https://github.com/vaishnavisoni03" target="_blank" rel="noopener noreferrer" class="contact-link-item">
-              <div class="contact-item-content">
-                <span class="contact-type-label">GitHub</span>
-                <strong class="contact-item-title">github.com/vaishnavisoni03</strong>
-                <span class="edit-hint">[Replace with your GitHub profile]</span>
-              </div>
-              <span class="link-arrow">&rarr;</span>
-            </a>
+              <!-- GitHub -->
+              <a href="https://github.com/vaishnavisoni03" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+                <div class="contact-item-content">
+                  <span class="contact-type-label">GitHub</span>
+                  <strong class="contact-item-title">github.com/vaishnavisoni03</strong>
+                </div>
+                <span class="link-arrow">&rarr;</span>
+              </a>
+            </div>
+
+            <!-- Interactive Quick Message Form -->
+            <div class="contact-form-wrap">
+              <h3 class="contact-form-title">Send a Quick Note</h3>
+              <p class="contact-form-desc">Have a question or want to collaborate? Drop a message below.</p>
+              
+              <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                  <label for="form-name" class="form-label">Your Name</label>
+                  <input type="text" id="form-name" name="name" class="form-input" placeholder="e.g. Alex Sharma" required>
+                </div>
+                <div class="form-group">
+                  <label for="form-email" class="form-label">Your Email</label>
+                  <input type="email" id="form-email" name="email" class="form-input" placeholder="e.g. alex@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="form-message" class="form-label">Message</label>
+                  <textarea id="form-message" name="message" class="form-textarea" placeholder="Write your message here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="form-submit-btn">
+                  <span>Send Message</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </button>
+              </form>
+            </div>
           </div>
 
           <!-- Professional Closing Statement -->
@@ -416,6 +553,45 @@
       </a>
     </div>
   </footer>
+
+  <!-- Project Detail Modal -->
+  <div class="modal-overlay" id="project-modal" aria-hidden="true" role="dialog">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="project-modal-close" aria-label="Close project modal">&times;</button>
+      <div id="project-modal-body">
+        <!-- Dynamically injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Photography Lightbox Modal -->
+  <div class="modal-overlay" id="lightbox-modal" aria-hidden="true" role="dialog">
+    <div class="modal-container lightbox-container">
+      <button class="modal-close-btn" id="lightbox-modal-close" aria-label="Close lightbox modal">&times;</button>
+      <div class="lightbox-img-wrap">
+        <img src="" alt="" id="lightbox-img" class="lightbox-img">
+      </div>
+      <div class="lightbox-caption-area">
+        <h3 id="lightbox-title" class="lightbox-title"></h3>
+        <p id="lightbox-desc" class="lightbox-subtitle"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Back to Top Button with SVG Circular Progress -->
+  <button class="back-to-top-progress" id="back-to-top" aria-label="Scroll back to top">
+    <svg class="progress-ring-svg" width="48" height="48" viewBox="0 0 48 48">
+      <circle class="progress-ring-bg" stroke="rgba(255, 214, 227, 0.1)" stroke-width="3" fill="transparent" r="23" cx="24" cy="24"/>
+      <circle class="progress-ring-circle" stroke-width="3" fill="transparent" r="23" cx="24" cy="24"/>
+    </svg>
+    <span class="progress-arrow-icon" aria-hidden="true">&uarr;</span>
+  </button>
+
+  <!-- Glassmorphic Toast Notification -->
+  <div class="toast-notification" id="toast" role="alert" aria-live="polite">
+    <div class="toast-icon">&#10003;</div>
+    <div class="toast-text" id="toast-text">Action completed successfully!</div>
+  </div>
 
   <!-- Vanilla JavaScript -->
   <script src="script.js"></script>
