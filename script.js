@@ -1,7 +1,8 @@
 // ==========================================================================
 // Vaishnavi Soni - Personal Portfolio Interactions
-// Vanilla JavaScript: Canvas Particles, Reading Progress, Filter Bars,
-// Lightbox, Project Modal, Clipboard Copy & Glassmorphic Toast Notifications
+// Vanilla JavaScript: Canvas Particles, Reading Progress, Roadmap Switcher,
+// Filter Bars, Modals (Projects, Certifications, Full-Screen Resume),
+// Lightbox, Print Handler, Clipboard Copy & Toast Notifications
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -45,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         this.vx = (Math.random() - 0.5) * 0.45;
         this.vy = (Math.random() - 0.5) * 0.45;
         this.alpha = Math.random() * 0.4 + 0.15;
-        // Warm palette colors: burgundy, crimson, rose gold
         const colors = ['212, 43, 93', '245, 202, 169', '158, 28, 62', '255, 214, 227'];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (this.x < 0 || this.x > width) this.vx *= -1;
         if (this.y < 0 || this.y > height) this.vy *= -1;
 
-        // Gentle reaction to cursor
         if (mouse.x !== null && mouse.y !== null) {
           const dx = mouse.x - this.x;
           const dy = mouse.y - this.y;
@@ -87,11 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
       particles.push(new Particle());
     }
 
-    let animId;
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Connect nearby particles with subtle gossamer lines
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -114,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         p.draw();
       });
 
-      animId = requestAnimationFrame(animate);
+      requestAnimationFrame(animate);
     };
 
     animate();
@@ -136,18 +133,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) : 0;
 
-    // Linear progress bar at top
     if (scrollProgress) {
       scrollProgress.style.width = `${scrollPercent * 100}%`;
     }
 
-    // Circular ring on floating back-to-top button
     if (progressCircle) {
       const offset = circumference - (scrollPercent * circumference);
       progressCircle.style.strokeDashoffset = offset;
     }
 
-    // Show or hide floating back-to-top button
     if (backToTopBtn) {
       if (scrollTop > 350) {
         backToTopBtn.classList.add('visible');
@@ -156,7 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Add scrolled class to header for deeper background
     const header = document.getElementById('header');
     if (header) {
       if (scrollTop > 40) {
@@ -189,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
       navToggle.setAttribute('aria-expanded', isOpen);
     });
 
-    // Close when clicking any nav link
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
@@ -198,7 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Close when clicking outside of nav menu
     document.addEventListener('click', (e) => {
       if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
         navMenu.classList.remove('active');
@@ -236,9 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
           observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.1
-    });
+    }, { threshold: 0.08 });
 
     revealElements.forEach((el) => revealObserver.observe(el));
   } else {
@@ -269,7 +258,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', highlightNavOnScroll, { passive: true });
 
-  // --- 7. Interactive Skills Filter ---
+  // --- 7. 4-Year Roadmap Year Switcher ---
+  const roadmapNav = document.getElementById('roadmap-nav');
+  if (roadmapNav) {
+    const tabBtns = roadmapNav.querySelectorAll('.roadmap-tab-btn');
+    const panels = document.querySelectorAll('.roadmap-year-panel');
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const year = btn.getAttribute('data-year');
+        panels.forEach((panel) => {
+          if (panel.id === `roadmap-year-${year}`) {
+            panel.classList.add('active');
+          } else {
+            panel.classList.remove('active');
+          }
+        });
+      });
+    });
+  }
+
+  // --- 8. Interactive Skills Filter ---
   const skillsFilter = document.getElementById('skills-filter');
   const skillCards = document.querySelectorAll('#skills-grid .skill-card');
 
@@ -301,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 8. Interactive Projects Filter ---
+  // --- 9. Interactive Projects Filter & Modal ---
   const projectsFilter = document.getElementById('projects-filter');
   const projectCards = document.querySelectorAll('#projects-grid .project-card');
 
@@ -333,7 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 9. Project Details Modal ---
   const projectModal = document.getElementById('project-modal');
   const projectModalBody = document.getElementById('project-modal-body');
   const projectModalClose = document.getElementById('project-modal-close');
@@ -445,7 +456,185 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 10. Photography Lightbox Modal ---
+  // --- 10. Certifications Verification Modal ---
+  const certModal = document.getElementById('cert-modal');
+  const certModalBody = document.getElementById('cert-modal-body');
+  const certModalClose = document.getElementById('cert-modal-close');
+
+  const certDetailsData = {
+    '1': {
+      title: 'Python for Data Science & Machine Learning Bootcamp',
+      issuer: 'DeepLearning.AI &bull; Coursera',
+      issuedDate: 'January 2026',
+      credentialId: 'DL-PY-2026-9812',
+      grade: '98.5% with Academic Honors',
+      summary: 'Comprehensive curriculum covering vectorization, multidimensional numerical computing with NumPy, data transformation pipelines with Pandas, and exploratory visualization with Matplotlib & Seaborn.',
+      topics: [
+        'Advanced vector and matrix operations with NumPy',
+        'Data cleaning, missing value handling, and grouping in Pandas',
+        'Feature scaling, normalization, and train/test evaluation split',
+        'Capstone project analyzing multi-variable real estate and census datasets'
+      ]
+    },
+    '2': {
+      title: 'CS50: Introduction to Computer Science',
+      issuer: 'Harvard University &bull; edX',
+      issuedDate: 'December 2025',
+      credentialId: 'CS50-VS-2025-4102',
+      grade: 'Certificate of Satisfactory Completion',
+      summary: 'Rigorous introduction to the intellectual enterprises of computer science and the art of programming. Topics include algorithmic thinking, data structures, memory management in C, and software engineering principles.',
+      topics: [
+        'Manual memory management, pointers, and memory leaks with Valgrind',
+        'Implementation of linked lists, hash tables, binary search trees, and tries',
+        'Asymptotic runtime analysis (Big-O, Big-Omega, Big-Theta)',
+        'Full software problem set solutions in C, Python, and SQL'
+      ]
+    },
+    '3': {
+      title: 'Foundations of AI & Machine Learning Concepts',
+      issuer: 'IBM &bull; Google Professional Certificate',
+      issuedDate: 'February 2026',
+      credentialId: 'IBM-AI-2026-6734',
+      grade: 'Professional Credential Verified',
+      summary: 'Deep dive into machine learning workflows, linear regression, logistic classification, decision trees, bias-variance tradeoff, neural network terminology, and trustworthy AI frameworks.',
+      topics: [
+        'Supervised, unsupervised, and reinforcement learning paradigms',
+        'Loss function optimization and gradient descent fundamentals',
+        'Evaluation metrics: Precision, Recall, F1-score, ROC-AUC',
+        'Ethical implications, data bias mitigation, and algorithmic accountability'
+      ]
+    },
+    '4': {
+      title: 'Responsive Web Design & Semantic UI Engineering',
+      issuer: 'Meta &bull; FreeCodeCamp',
+      issuedDate: 'November 2025',
+      credentialId: 'META-WD-2025-8821',
+      grade: '300-Hour Developer Certification',
+      summary: 'Modern front-end architecture, semantic HTML5 structure, CSS3 Flexbox & Grid layouts, accessibility standards (WCAG 2.1 AA), and cross-browser responsive design.',
+      topics: [
+        'Mobile-first responsive layouts and media query architecture',
+        'CSS custom properties (design tokens) and dark/light themes',
+        'Accessible DOM navigation, ARIA landmarks, and focus management',
+        'Completion of 5 certified production-grade web application layouts'
+      ]
+    }
+  };
+
+  const openCertModal = (certId) => {
+    const data = certDetailsData[certId];
+    if (!data || !certModal || !certModalBody) return;
+
+    certModalBody.innerHTML = `
+      <div style="margin-bottom: 1.25rem;">
+        <span class="cert-verified-pill" style="margin-bottom: 0.5rem; display: inline-block;">&#10003; Verified Micro-Credential</span>
+        <h2 style="font-size: 1.6rem; color: #fff2f6; margin-top: 0.4rem; font-family: var(--font-serif);">${data.title}</h2>
+        <p style="color: var(--color-rose-gold); font-size: 0.95rem; font-weight: 700; margin-top: 0.25rem;">${data.issuer}</p>
+      </div>
+
+      <div style="background: rgba(15, 5, 11, 0.7); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 0.85rem 1.1rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 0.86rem;">
+        <span><strong>Issued:</strong> ${data.issuedDate}</span>
+        <span><strong>Status:</strong> ${data.grade}</span>
+        <span style="font-family: monospace; color: var(--color-rose-gold);"><strong>Credential ID:</strong> ${data.credentialId}</span>
+      </div>
+
+      <p style="color: var(--text-body); font-size: 0.98rem; line-height: 1.7; margin-bottom: 1.2rem;">${data.summary}</p>
+      
+      <h4 style="font-size: 1.05rem; color: #fff2f6; margin-bottom: 0.65rem; font-family: var(--font-sans); font-weight: 700;">Core Curricular Competencies:</h4>
+      <ul style="color: var(--text-body); font-size: 0.92rem; margin-left: 1.25rem; line-height: 1.75; margin-bottom: 1.6rem;">
+        ${data.topics.map(t => `<li>${t}</li>`).join('')}
+      </ul>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; padding-top: 1rem; border-top: 1px solid var(--border-light);">
+        <span style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">Cryptographically authentic credential record</span>
+        <button type="button" class="btn btn-primary btn-sm" onclick="navigator.clipboard.writeText('${data.credentialId}'); alert('Credential ID ${data.credentialId} copied!');">
+          Copy Credential ID
+        </button>
+      </div>
+    `;
+
+    certModal.classList.add('active');
+    certModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeCertModal = () => {
+    if (!certModal) return;
+    certModal.classList.remove('active');
+    certModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  const certCards = document.querySelectorAll('.cert-card');
+  certCards.forEach((card) => {
+    card.addEventListener('click', (e) => {
+      const id = card.getAttribute('data-cert-id');
+      if (id) openCertModal(id);
+    });
+  });
+
+  const certVerifyBtns = document.querySelectorAll('.cert-verify-btn');
+  certVerifyBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.getAttribute('data-cert-id');
+      if (id) openCertModal(id);
+    });
+  });
+
+  if (certModalClose) {
+    certModalClose.addEventListener('click', closeCertModal);
+  }
+
+  if (certModal) {
+    certModal.addEventListener('click', (e) => {
+      if (e.target === certModal) closeCertModal();
+    });
+  }
+
+  // --- 11. Full-Screen Resume Modal & Print Handling ---
+  const resumePrintBtn = document.getElementById('resume-print-btn');
+  const resumeFullscreenBtn = document.getElementById('resume-fullscreen-btn');
+  const resumeModal = document.getElementById('resume-modal');
+  const resumeModalBody = document.getElementById('resume-modal-body');
+  const resumeModalClose = document.getElementById('resume-modal-close');
+  const resumeDocument = document.getElementById('resume-document');
+
+  if (resumePrintBtn) {
+    resumePrintBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  const openResumeModal = () => {
+    if (!resumeModal || !resumeModalBody || !resumeDocument) return;
+    resumeModalBody.innerHTML = resumeDocument.innerHTML;
+    resumeModal.classList.add('active');
+    resumeModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeResumeModal = () => {
+    if (!resumeModal) return;
+    resumeModal.classList.remove('active');
+    resumeModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  if (resumeFullscreenBtn) {
+    resumeFullscreenBtn.addEventListener('click', openResumeModal);
+  }
+
+  if (resumeModalClose) {
+    resumeModalClose.addEventListener('click', closeResumeModal);
+  }
+
+  if (resumeModal) {
+    resumeModal.addEventListener('click', (e) => {
+      if (e.target === resumeModal) closeResumeModal();
+    });
+  }
+
+  // --- 12. Photography Lightbox Modal ---
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxTitle = document.getElementById('lightbox-title');
@@ -495,11 +684,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeProjectModal();
+      closeCertModal();
+      closeResumeModal();
       closeLightbox();
     }
   });
 
-  // --- 11. Toast Notification System ---
+  // --- 13. Toast Notification System ---
   const toast = document.getElementById('toast');
   const toastText = document.getElementById('toast-text');
   let toastTimer;
@@ -515,7 +706,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3800);
   };
 
-  // --- 12. Copy Email to Clipboard ---
+  // --- 14. Copy Email to Clipboard ---
   const copyEmailBtn = document.getElementById('copy-email-btn');
   const emailTextEl = document.getElementById('contact-email');
 
@@ -528,7 +719,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (navigator.clipboard && navigator.clipboard.writeText) {
           await navigator.clipboard.writeText(emailToCopy);
         } else {
-          // Fallback
           const tempInput = document.createElement('input');
           tempInput.value = emailToCopy;
           document.body.appendChild(tempInput);
@@ -555,7 +745,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 13. Interactive Contact Form Submission ---
+  // --- 15. Interactive Contact Form Submission ---
   const contactForm = document.getElementById('contact-form');
   const formSubmitBtn = document.getElementById('form-submit-btn');
 
@@ -564,9 +754,6 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
 
       const nameInput = document.getElementById('form-name');
-      const emailInput = document.getElementById('form-email');
-      const messageInput = document.getElementById('form-message');
-
       const name = nameInput ? nameInput.value.trim() : 'there';
 
       if (formSubmitBtn) {
@@ -574,7 +761,6 @@ document.addEventListener('DOMContentLoaded', () => {
         formSubmitBtn.innerHTML = '<span>Sending...</span>';
       }
 
-      // Simulate instantaneous responsive feedback
       setTimeout(() => {
         if (formSubmitBtn) {
           formSubmitBtn.disabled = false;
